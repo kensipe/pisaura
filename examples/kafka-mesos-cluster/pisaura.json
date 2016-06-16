@@ -1,0 +1,16 @@
+{
+  "id": "pisaura",
+  "cpus": 0.2,
+  "mem": 512,
+  "instances": 1,
+  "cmd": "python framework.zip_ scheduler --master=leader.mesos.service:5050 --api=$HOST:8000 --resource=https://s3-us-west-2.amazonaws.com/elodina-cobra-demo-kafka/failure_producer.sh --resource=https://s3-us-west-2.amazonaws.com/elodina-cobra-demo-kafka/healthcheck.py --resource=https://s3-us-west-2.amazonaws.com/elodina-cobra-demo-kafka/framework.zip_ --resource=https://s3-us-west-2.amazonaws.com/elodina-cobra-demo-kafka/pykafka_centos7.zip_ --executor-command='python framework.zip_ executor' --task-retry=1
+",
+  "debug": true,
+  "uris": [
+    "https://s3-us-west-2.amazonaws.com/elodina-cobra-demo-kafka/framework.zip_",
+    "https://s3-us-west-2.amazonaws.com/elodina-cobra-demo-kafka/failure_producer.sh",
+    "https://s3-us-west-2.amazonaws.com/elodina-cobra-demo-kafka/healthcheck.py",
+    "https://s3-us-west-2.amazonaws.com/elodina-cobra-demo-kafka/pykafka_centos7.zip_"
+  ]
+}
+

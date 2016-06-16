@@ -1,0 +1,29 @@
+{
+    "service": "kafka-mesos testing",
+    "cpus": 0.8,
+    "mem": 200,
+    "hosts": [
+        "broker-0.service"
+    ],
+    "ssh": {
+        "username": "manager",
+        "password": "",
+        "key_filename": "/home/manager/.ssh/id_rsa"
+    },
+    "loglevel": "debug",
+    "failfast": true,
+    "failures": [
+        {
+            "name": "iptables blocks kafka port",
+            "inducer": ["/tmp/failure_producer.sh", "31250"],
+            "reverter": ["/tmp/failure_producer.sh", "revert"],
+            "healthcheck": [
+                "PYTHONPATH=pykafka_centos7.zip_ python healthcheck.py",
+                "--broker=broker-0.service:31250",
+                "--broker=broker-1.service:31250",
+                "--broker=broker-2.service:31250",
+                "--exclude-broker=broker-0.service:31250"
+            ]
+        }
+    ]
+}
